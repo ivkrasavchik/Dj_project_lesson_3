@@ -8,7 +8,7 @@ html, body{
 }
 
 .general-container{
-    background: url("landing/img/dg_image.jpg");
+    background: url("../img/dg_image.jpg");
     height: 100%;
 }
 
