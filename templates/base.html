@@ -23,15 +23,20 @@
 </head>
 <body>
     <div class="wrapper">
-       <!--navbar-->
-       {% include 'navbar.html' %}
+        <div class="wrapper-content">
 
-       {% block content %}
-       {% endblock content %}
+           <!--navbar-->
+           {% include 'navbar.html' %}
 
-       <!--footer-->
-        {% include 'footer.html' %}
+            <!--block-->
+           {% block content %}
+           {% endblock content %}
+
+        </div>
     </div>
+
+    <!--footer-->
+    {% include 'footer.html' %}
 
     <!--jQuery-->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>

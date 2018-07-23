@@ -5,16 +5,45 @@ html, body{
             background-color: #edeef0;
         }
 
+.navbar{
+    margin-bottom: 0;
+}
+
+.wrapper{
+    min-height: 100%;
+}
+
+.wrapper-content{
+    overflow: auto;
+    padding-bottom: 180px;
+}
+
+.footer{
+    position: relative;
+    background-color: white;
+    height: 180px;
+    clear: both;
+    margin-top: -180px;
+}
+
 .section-top{
-    margin: 20px;
+    margin-bottom: 20px;
+}
+
+.section{
+    padding: 50px 0;
+}
+
+.section h1{
+    margin-bottom: 40px;
 }
 
 .product-item{
-    height: 360px;
+    height: 400px;
     background-color: white;
     border: 1px solid lightgray;
     position: relative;
-    padding: 5px;
+    padding: 10px 0 10px 0;
     text-align: center;
     margin-bottom: 10px;
 
@@ -24,4 +53,26 @@ html, body{
     position: absolute;
     bottom: 15px;
     left: 50px;
+}
+
+.discount-container{
+    position: absolute;
+    top: 30%;
+    background: #55e073;
+    width: 30%;
+    color: white;
+    font-weight: 700;
+    padding: 3px;
+}
+
+.product-image-item{
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+.section-delivery{
+    height: 300px;
+    background-color: darkseagreen;
+    text-align: center;
+    color: white;
 }
