@@ -27,7 +27,14 @@ class ProductInOrderAdmin(admin.ModelAdmin):
     class Meta:
         model = ProductInOrder
 
+class ProductInBasketAdmin(admin.ModelAdmin):
+    list_display = [field.name for field in ProductInBasket._meta.fields]  # выводит все поля
+
+    class Meta:
+        model = ProductInBasket
+
 
 admin.site.register(Status, StatusAdmin)
 admin.site.register(Order, OrderAdmin)
 admin.site.register(ProductInOrder, ProductInOrderAdmin)
+admin.site.register(ProductInBasket, ProductInBasketAdmin)

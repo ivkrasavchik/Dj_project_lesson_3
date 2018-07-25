@@ -74,3 +74,28 @@ def product_in_order_post_save(sender, instance, created, **kwargs):
 
 
 signals.post_save.connect(product_in_order_post_save, sender=ProductInOrder)
+
+
+class ProductInBasket(models.Model):  # модели принято называть в ед. числе
+    session_key = models.CharField(max_length=128,  blank=True, null=True, default=None)
+    order = models.ForeignKey(Order, blank=True, null=True, default=None, on_delete=models.SET_NULL)
+    product = models.ForeignKey(Product, blank=True, null=True, default=None, on_delete=models.SET_NULL)
+    nmb = models.IntegerField(default=1)
+    price_per_item = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    total_price = models.DecimalField(max_digits=10, decimal_places=2, default=0)  # price*nmb
+    is_active = models.BooleanField(default=True)
+    created = models.DateTimeField(auto_now_add=True, auto_now=False)
+    update = models.DateTimeField(auto_now_add=True, auto_now=False)
+
+    class Meta:
+        # django само определяет единственное и множественное число, но можно переопределить
+        verbose_name = "Товар в корзине"  # приомзносимое имя в единственном числе
+        verbose_name_plural = "Товары в корзине"  # приомзносимое имя во множественном числе
+
+    def save(self, *args, **kwargs):
+        self.price_per_item = self.product.price
+        self.total_price = int(self.nmb) * self.price_per_item
+
+        super(ProductInBasket, self).save(*args, **kwargs)
+
+

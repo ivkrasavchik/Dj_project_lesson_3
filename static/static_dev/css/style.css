@@ -83,7 +83,32 @@ html, body{
 }
 
 .img-responsive{
-    max-width: 100%;
-    height: auto;
     display: inherit;
+}
+
+.navbar-top{
+    min-height: 20px;
+    height: 10px;
+    background-color: lightgray;
+    border: none;
+    border-radius: 0;
+}
+
+/*.navbar-main{*/
+    /*background-color: aqua;*/
+/*}*/
+
+.basket-container{
+    position: relative;
+    width: 400px;
+    padding: 15px 10px;
+}
+
+.basket-item{
+    position: absolute;
+    top: 50px;
+    width: 100%;
+    background-color: wheat;
+    z-index: 10;
+    padding: 10px;
 }
