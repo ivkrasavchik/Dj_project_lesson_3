@@ -53,6 +53,7 @@ html, body{
     position: absolute;
     bottom: 15px;
     left: 50px;
+    /*transform: translateX(-50%);*/
 }
 
 .discount-container{
@@ -75,4 +76,14 @@ html, body{
     background-color: darkseagreen;
     text-align: center;
     color: white;
+}
+
+.product-description-tabs{
+    padding: 10px;
+}
+
+.img-responsive{
+    max-width: 100%;
+    height: auto;
+    display: inherit;
 }
