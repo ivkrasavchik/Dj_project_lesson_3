@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 from products.models import Product
 from django.db.models import signals
@@ -6,7 +7,7 @@ class Status(models.Model):  # модели принято называть в �
     name = models.CharField(max_length=24, blank=True, null=True, default=None)
     is_active = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True, auto_now=False)
-    update = models.DateTimeField(auto_now_add=True, auto_now=False)
+    update = models.DateTimeField(auto_now_add=False, auto_now=True)
 
     class Meta:
         # django само определяет единственное и множественное число, но можно переопределить
@@ -18,6 +19,7 @@ class Status(models.Model):  # модели принято называть в �
 
 
 class Order(models.Model):  # модели принято называть в ед. числе
+    user = models.ForeignKey(User, blank=True, null=True, default=None, on_delete=models.CASCADE)
     total_price = models.DecimalField(max_digits=10, decimal_places=2, default=0)  # total price for all products in order
     customer_name = models.CharField(max_length=64)
     customer_email = models.EmailField(blank=True, null=True, default=None)
@@ -57,7 +59,7 @@ class ProductInOrder(models.Model):  # модели принято называ�
 
     def save(self, *args, **kwargs):
         self.price_per_item = self.product.price
-        self.total_price = self.nmb * self.price_per_item
+        self.total_price = int(self.nmb) * self.price_per_item
 
         super(ProductInOrder, self).save(*args, **kwargs)
 
@@ -77,6 +79,7 @@ signals.post_save.connect(product_in_order_post_save, sender=ProductInOrder)
 
 
 class ProductInBasket(models.Model):  # модели принято называть в ед. числе
+
     session_key = models.CharField(max_length=128,  blank=True, null=True, default=None)
     order = models.ForeignKey(Order, blank=True, null=True, default=None, on_delete=models.SET_NULL)
     product = models.ForeignKey(Product, blank=True, null=True, default=None, on_delete=models.SET_NULL)
