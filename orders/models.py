@@ -3,6 +3,7 @@ from django.db import models
 from products.models import Product
 from django.db.models import signals
 
+
 class Status(models.Model):  # модели принято называть в ед. числе
     name = models.CharField(max_length=24, blank=True, null=True, default=None)
     is_active = models.BooleanField(default=True)

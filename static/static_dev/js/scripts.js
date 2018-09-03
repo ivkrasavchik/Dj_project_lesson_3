@@ -23,7 +23,7 @@ $(document).ready(function () {
             type: 'POST',
             data: data,
             cache: true,
-            success: function (data) {
+            success: function(data){
                 console.log("OK");
                 console.log(data.products_total_nmb);
 
